@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Northline — Pre-Token Radar</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <h1>Northline</h1>
+    <p class="tag">Pre-token radar — which protocol is worth farming next, and what to do about it</p>
+  </div>
+  <div class="snap" id="snapLine">Snapshot: DefiLlama protocols, fetched 2026-11-14. Model northline-1.</div>
+</header>
+
+<section class="stats" id="stats" aria-label="Coverage"></section>
+
+<section class="spot" id="top3" aria-label="Top three candidates"></section>
+
+<section class="fstrip" aria-label="Value formula in one line">
+  <p class="ftext" id="formulaStrip"></p>
+  <p class="validline" id="validStrip"></p>
+</section>
+
+<section class="controls" aria-label="Filter and sort">
+  <input id="q" type="search" placeholder="Search name, slug or category…" aria-label="Search">
+  <select id="fCat" aria-label="Category"><option value="">All categories</option></select>
+  <select id="fChain" aria-label="Chain"><option value="">All chains</option></select>
+  <select id="fConf" aria-label="Confidence">
+    <option value="">Any confidence</option><option>High</option><option>Medium</option><option>Low</option>
+  </select>
+  <select id="fVerdict" aria-label="Farm verdict">
+    <option value="">Any verdict</option><option>Farm</option><option>Thin</option><option>Skip</option>
+  </select>
+  <select id="fSort" aria-label="Sort by">
+    <option value="rank">Sort: rank</option>
+    <option value="value">Sort: implied value</option>
+    <option value="net">Sort: net per hour</option>
+    <option value="tvl">Sort: TVL</option>
+    <option value="chg">Sort: 7-day change</option>
+  </select>
+  <div class="dep" role="group" aria-label="Deposit size">
+    <span>Deposit:</span>
+    <button id="dep1k" class="on" type="button">$1K</button>
+    <button id="dep10k" type="button">$10K</button>
+  </div>
+  <button id="resetBtn" type="button">Reset</button>
+  <span class="count" id="rowCount"></span>
+</section>
+
+<p class="headline" id="headline"></p>
+
+<section class="boardwrap" aria-label="Ranked board">
+  <table class="board" id="board">
+    <thead>
+      <tr>
+        <th>#</th><th>Protocol</th><th>TVL</th><th>7D</th><th>Age</th>
+        <th>Implied value (P10–P90)</th><th>Rank range</th><th>Conf.</th><th>Momentum</th>
+        <th>Net if launch</th><th>Break-even</th><th>Net / hour</th><th>Verdict</th>
+      </tr>
+    </thead>
+    <tbody id="boardBody"></tbody>
+  </table>
+  <p class="empty" id="emptyMsg" hidden>No protocol matches these filters.</p>
+</section>
+
+<section class="detail" id="detail" hidden aria-label="Protocol detail"></section>
+
+<section class="panel formula" aria-label="How a value is built">
+  <div class="fleft">
+    <h2>How a value is built</h2>
+    <p class="ftext" id="formulaText"></p>
+    <table class="terms" id="termsTable">
+      <thead><tr><th>Term</th><th>What it is</th><th>Fitted</th><th>Blind test says</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <div class="valid" id="validBox"></div>
+    <table class="abl" id="ablTable">
+      <thead><tr><th>If this term is dropped</th><th>Blind median miss</th><th>% within 3×</th><th>Top-20 kept</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="fright">
+    <h3>Traded tokens: the comps the model learns from</h3>
+    <div id="scatter"></div>
+    <p class="cap" id="scatterCap"></p>
+  </div>
+</section>
+
+<section class="method" aria-label="Method and assumptions">
+  <h2>Method, in full</h2>
+  <div id="methodBody"></div>
+  <p class="badge" id="badge">Reproducibility: checking…</p>
+</section>
+
+<footer>
+  <p>Northline model northline-1. Data: DefiLlama protocols snapshot, fetched 2026-11-14T01:18:33Z. Implied values are this radar's own claim, never DefiLlama's or make.fun's. A protocol is said to record no token, never that it has none.</p>
+  <p>No token is promised anywhere on this page. Farm plans are how to use a protocol; usage is what any future distribution would read.</p>
+</footer>
+
+<script src="model.js"></script>
+<script src="zdata.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
